@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordChangeRequest;
 use App\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -62,11 +65,28 @@ class HomeController extends Controller
 
     public function viewChangePassword()
     {
-        return redirect('view_change_password');
+        return view('change_password');
     }
 
-    public function changePassword(Request $request)
+    public function changePassword(PasswordChangeRequest $request)
     {
-        dd($request->all());
+        $data = $request->validated();
+        $current_password = $data['current_password'];
+        $confirm_password = $data['confirm_password'];
+        $user = User::where('id', Auth::id())->first();
+        if (password_verify($current_password, $user->password)) {
+//            User::where('id', Auth::id())
+//                ->update([
+//                    'password' => Hash::make($confirm_password)
+//                ]);
+            DB::table('users')
+                ->where('id', '=', Auth::id())
+                ->update([
+                    'password' => Hash::make($confirm_password)
+                ]);
+            return $this->logout();
+        } else {
+            return redirect()->back()->with('error', 'Password does not match!');
+        }
     }
 }

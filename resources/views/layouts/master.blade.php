@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('layouts.header_links')
+    @yield('page_css')
 </head>
 <body class="page-body">
 
@@ -150,6 +151,7 @@
 
 
 @include('layouts.footer_links')
+@yield('page_js')
 
 </body>
 </html>
