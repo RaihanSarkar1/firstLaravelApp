@@ -24,3 +24,7 @@ Route::get('logout', 'HomeController@logout');
 Route::get('home', 'HomeController@viewHome')->middleware('isLoggedIn');
 Route::get('change_password', 'HomeController@viewChangePassword')->middleware('isLoggedIn');
 Route::post('change_password', 'HomeController@changePassword')->middleware('isLoggedIn');
+Route::get('add_user', 'UserController@addView')->middleware('isLoggedIn');
+Route::get('users', 'UserController@index')->middleware('isLoggedIn');
+Route::post('add_user', 'UserController@store')->middleware('isLoggedIn');
+Route::post('check_email', 'UserController@checkEmail')->middleware('isLoggedIn');
