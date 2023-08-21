@@ -43,4 +43,15 @@ class UserController extends Controller
             return false;
         }
     }
+
+    public function edit(int $id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('user.edit', compact('user'));
+    }
+
+    public function update($id, Request $request)
+    {
+        dd($request->all());
+    }
 }

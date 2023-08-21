@@ -40,7 +40,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <a href="#"><button type="button" class="btn btn-blue">Edit</button></a>
+                                    <a href="{{ url('user/edit/'.$user->id) }}"><button type="button" class="btn btn-blue">Edit</button></a>
                                     <a href="#"><button type="button" class="btn btn-danger">Delete</button></a>
                                 </td>
                             </tr>
