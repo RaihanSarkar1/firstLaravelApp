@@ -18,6 +18,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Image</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -27,6 +28,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Image</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -38,6 +40,9 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td><div class="user-profile">
+                                        <img src="{{ asset('storage/user/'.$user->image) }}" alt="" class="img-circle img-inline userpic-32" height="50px">
+                                    </div></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
                                     <a href="{{ url('user/edit/'.$user->id) }}"><button type="button" class="btn btn-blue">Edit</button></a>

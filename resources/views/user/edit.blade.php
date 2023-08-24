@@ -10,7 +10,7 @@
             @if ($errors->any())
                 <h1>{{ $errors->first() }}</h1>
             @endif
-            <form action="{{ url('user/update/'.$user->id) }}" role="form" id="form1" method="post" class="validate">
+            <form action="{{ url('user/update/'.$user->id) }}" role="form" id="form1" method="post" class="validate" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label class="control-label">Name</label>
@@ -23,6 +23,12 @@
 
                     <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}" data-validate="required" data-message-required="This is custom message for required field." placeholder="Required Field" />
                     <span id="email_err"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Image</label>
+
+                    <input type="file" class="form-control" name="image" id="image" />
                 </div>
 
                 <div class="form-group">

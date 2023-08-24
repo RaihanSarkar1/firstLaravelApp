@@ -10,7 +10,7 @@
             @if ($errors->any())
                 <h1>{{ $errors->first() }}</h1>
             @endif
-            <form action="{{ url('add_user') }}" role="form" id="form1" method="post" class="validate">
+            <form action="{{ url('add_user') }}" role="form" id="form1" method="post" class="validate" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label class="control-label">Name</label>
@@ -32,7 +32,13 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" id="submidt_btn" class="btn btn-success custom_c">Submit</button>
+                    <label class="control-label">Image</label>
+
+                    <input type="file" class="form-control" name="image" id="image" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="submit_btn" class="btn btn-success custom_c">Submit</button>
                 </div>
 
             </form>
