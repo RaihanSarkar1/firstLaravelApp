@@ -38,4 +38,13 @@ class User extends Authenticatable
     ];
 
 
+    public function image()
+    {
+        return $this->belongsTo(Image::class, 'image_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(UserImages::class, 'user_id', 'id');
+    }
 }

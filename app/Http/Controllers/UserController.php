@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserAddRequest;
 use App\Http\Requests\UserEditRequest;
+use App\Image;
 use App\User;
 use Faker\Core\Uuid;
 use Illuminate\Http\Request;
@@ -61,7 +62,9 @@ class UserController extends Controller
 
     public function edit(int $id)
     {
-        $user = User::where('id', $id)->first();
+        //$user = User::with(['images.image', 'images.user'])->where('id', $id)->first();
+        $images = Image::with(['users.user'])->where('id', 1)->first();
+        dd($images);
         return view('user.edit', compact('user'));
     }
 
